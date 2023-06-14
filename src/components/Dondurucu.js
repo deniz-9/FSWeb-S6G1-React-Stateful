@@ -36,12 +36,16 @@ ADIM 4:
 */
 
 import React from 'react'; /* STEP 0 */
+import { useState } from "react";
 
 export default function Dondurucu() {
 /* ADIM 1 */
+const [döndürücüAçık, setdöndürücüAcik] = useState(true);
 
   const toggleDondurucu = () => {
   /* ADIM 4 */
+
+  setdöndürücüAcik(!döndürücüAçık);
   };
 
   return (
@@ -51,7 +55,7 @@ export default function Dondurucu() {
         true && <div id='döndürücü' className='spinner'>--+--</div> /* ADIM 2 */
       }
       <button id='toggleDondurucu' onClick={toggleDondurucu}>
-         Gizle {/* STEP 3 */}
+      {döndürücüAçık ? "Gizle" : "Göster"}  {/* STEP 3 */}
       </button>
     </div>
   );
