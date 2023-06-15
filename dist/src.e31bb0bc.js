@@ -29043,11 +29043,11 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; } /*
 function Input() {
   /* ADIM 1 */
 
+  var _useState = (0, _react.useState)(""),
+    _useState2 = _slicedToArray(_useState, 2),
+    inputDegeri = _useState2[0],
+    setInputDegeri = _useState2[1];
   var inputuDeğiştir = function inputuDeğiştir(evt) {
-    var _useState = (0, _react.useState)(""),
-      _useState2 = _slicedToArray(_useState, 2),
-      inputDeğeri = _useState2[0],
-      setInputDegeri = _useState2[1];
     // When the input changes, its whole value can be found inside the event object.
     // Log out the synthetic event object 'evt' and see for yourself.
     var value = evt.target.value;
@@ -29062,7 +29062,7 @@ function Input() {
   var stil = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    color: inputDeğeri.length > 10 ? "crimson" : "royalblue" /* ADIM 2 */
+    color: inputDegeri.length > 10 ? "crimson" : "royalblue" /* ADIM 2 */
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -29070,11 +29070,11 @@ function Input() {
   }, /*#__PURE__*/_react.default.createElement("h2", null, "Input"), /*#__PURE__*/_react.default.createElement("div", {
     id: "output",
     style: stil
-  }, inputDeğeri.toUpperCase(), " "), " ", " ", /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
+  }, inputDegeri.toUpperCase(), " "), " ", " ", /*#__PURE__*/_react.default.createElement("div", null, /*#__PURE__*/_react.default.createElement("input", {
     id: "input",
     type: "text",
     onChange: inputuDeğiştir,
-    value: inputDeğeri
+    value: inputDegeri
   }), " ", /*#__PURE__*/_react.default.createElement("button", {
     id: "resetInput",
     onClick: reset
@@ -29147,7 +29147,7 @@ function RuhHalleri() {
   var stil = {
     fontSize: '1.5em',
     marginBottom: '0.3em',
-    olor: ruhHali === mutluRuhHali ? "royalblue" : "crimson" /* ADIM 2 */
+    color: ruhHali === mutluRuhHali ? "royalblue" : "crimson" /* ADIM 2 */
   };
 
   return /*#__PURE__*/_react.default.createElement("div", {
@@ -29221,22 +29221,22 @@ function Dondurucu() {
   /* ADIM 1 */
   var _useState = (0, _react.useState)(true),
     _useState2 = _slicedToArray(_useState, 2),
-    döndürücüAçık = _useState2[0],
+    dondurucuAcik = _useState2[0],
     setdöndürücüAcik = _useState2[1];
   var toggleDondurucu = function toggleDondurucu() {
     /* ADIM 4 */
 
-    setdöndürücüAcik(!döndürücüAçık);
+    setdöndürücüAcik(!dondurucuAcik);
   };
   return /*#__PURE__*/_react.default.createElement("div", {
     className: "widget-spinner container"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "D\xF6nd\xFCr\xFCc\xFC"), true && /*#__PURE__*/_react.default.createElement("div", {
+  }, /*#__PURE__*/_react.default.createElement("h2", null, "D\xF6nd\xFCr\xFCc\xFC"), dondurucuAcik && /*#__PURE__*/_react.default.createElement("div", {
     id: "d\xF6nd\xFCr\xFCc\xFC",
     className: "spinner"
   }, "--+--") /* ADIM 2 */, /*#__PURE__*/_react.default.createElement("button", {
     id: "toggleDondurucu",
     onClick: toggleDondurucu
-  }, döndürücüAçık ? "Gizle" : "Göster", "  "));
+  }, dondurucuAcik ? "Gizle" : "Göster", "  "));
 }
 },{"react":"../node_modules/react/index.js"}],"components/Kareler.js":[function(require,module,exports) {
 "use strict";
@@ -29275,20 +29275,19 @@ function Kareler() {
   // 'aktifKare' olmak üzere. Birisi kare idlerini _dizi_ olarak tutacak, diğeri ise aktif olan
   // kareyi gözlemleyecek. Sayfa yüklendiğinde aktif kare olmayacak,
   // yani  'aktifKare' null olmalı.
-
+  var _useState = (0, _react.useState)(KareIdListesi),
+    _useState2 = _slicedToArray(_useState, 2),
+    kareler = _useState2[0],
+    setKareler = _useState2[1];
+  var _useState3 = (0, _react.useState)(null),
+    _useState4 = _slicedToArray(_useState3, 2),
+    aktifKare = _useState4[0],
+    setAktifKare = _useState4[1];
   var ClassAdiAl = function ClassAdiAl(id) {
     // Bu bir click handler değildir, JSX içinde kullanılan bir yardımcıdır(helper).(aşağıya bakın)
     // Eğer argüman olarak verilen id aktif kare state'indeki id ile eşleşirse, class adı 'active' olan bir string döndürecek
     // diğer durumlar için boş döndürecek.
     // Etkisini görmek için kareye sağ tıklayın ve "öğeyi inceleyin".
-    var _useState = (0, _react.useState)(KareIdListesi),
-      _useState2 = _slicedToArray(_useState, 2),
-      kareler = _useState2[0],
-      setKareler = _useState2[1];
-    var _useState3 = (0, _react.useState)(null),
-      _useState4 = _slicedToArray(_useState3, 2),
-      aktifKare = _useState4[0],
-      setAktifKare = _useState4[1];
     return id === aktifKare ? "active" : "";
   };
   var AktifEt = function AktifEt(id) {
@@ -29387,47 +29386,44 @@ function Programcilar() {
     // Öne çıkan geliştiricinin _isim_ adını döndürmek için her iki state dilimini kullanacak.
     // Closureların güzelliği, argümanlar yoluyla bilgi enjekte etmeye gerek kalmadan programın 
     // bu bölgesinden her iki state dilimini de "görebilmemiz"dir.
-    var _useState5 = (0, _react.useState)(enIyilerListesi),
-      _useState6 = _slicedToArray(_useState5, 2),
-      programcilar = _useState6[0],
-      setProgramcilar = _useState6[1];
-    var _useState7 = (0, _react.useState)(null),
-      _useState8 = _slicedToArray(_useState7, 2),
-      programciId = _useState8[0],
-      setProgramciId = _useState8[1];
-  };
-  var stil = {
-    fontSize: '1.5em',
-    marginTop: '0.5em',
-    color: programciId == null ? "royalblue" : "gold" // 🤔 kutlarken renk gold'a dönecek
-  };
+    // if (programciId) {
+    //   return programcilar.find((programciId) => programciId.id === programcilar.isim
+    // }
+    // };
 
-  return /*#__PURE__*/_react.default.createElement("div", {
-    className: "widget-programmers container"
-  }, /*#__PURE__*/_react.default.createElement("h2", null, "Programc\u0131lar"), /*#__PURE__*/_react.default.createElement("div", {
-    className: "programmers"
-  },
-  /* Kötü bug! 'enIyilerListesi' yerine bir state dilimini maplemeliyiz.
-  // Şöyle diyebiliriz: "aa bu çalışıyor!" Ama programcilar bir state diliminden gelmiyorsa,
-  // asla yeni programci ekleyemeyiz, programcilari düzenleyemeyiz ya da silemeyiz. Düzeltin!
-  " */
-  enIyilerListesi.map(function (dev) {
+    var stil = {
+      fontSize: '1.5em',
+      marginTop: '0.5em',
+      color: programciId == null ? "royalblue" : "gold" // 🤔 kutlarken renk gold'a dönecek
+    };
+
     return /*#__PURE__*/_react.default.createElement("div", {
-      className: "programmer",
-      key: dev.id
-    }, dev.isim, " ", " ", /*#__PURE__*/_react.default.createElement("button", {
-      onClick: function onClick() {
-        setProgramciId(dev.id);
-      }
-    }, "Kutla"));
-  })), /*#__PURE__*/_react.default.createElement("div", {
-    id: "featured",
-    style: stil
-  },
-  // Üçlüler, bir şeyin "gerçekliğine" bağlı olarak "bir şeyi veya diğerini" ifade etmek için harikadır..
-  // Sözde-kod: öne çıkan true ise metin 1'i oluşturun, aksi takdirde metin 2'yi oluşturun..
-  // Sabit kodlanmış false'u doğru değişkenle değiştirin.
-  false ? "\uD83C\uDF89 Hadi ".concat(oneCikaninIsmi(), "'\u0131 kutlayal\u0131m! \uD83E\uDD73") : 'Harika bir programcı seçin'));
+      className: "widget-programmers container"
+    }, /*#__PURE__*/_react.default.createElement("h2", null, "Programc\u0131lar"), /*#__PURE__*/_react.default.createElement("div", {
+      className: "programmers"
+    },
+    /* Kötü bug! 'enIyilerListesi' yerine bir state dilimini maplemeliyiz.
+    // Şöyle diyebiliriz: "aa bu çalışıyor!" Ama programcilar bir state diliminden gelmiyorsa,
+    // asla yeni programci ekleyemeyiz, programcilari düzenleyemeyiz ya da silemeyiz. Düzeltin!
+    " */
+    programcilar.map(function (dev) {
+      return /*#__PURE__*/_react.default.createElement("div", {
+        className: "programmer",
+        key: dev.id
+      }, dev.isim, " ", " ", /*#__PURE__*/_react.default.createElement("button", {
+        onClick: function onClick() {
+          setProgramciId(dev.id);
+        }
+      }, "Kutla"));
+    })), /*#__PURE__*/_react.default.createElement("div", {
+      id: "featured",
+      style: stil
+    },
+    // Üçlüler, bir şeyin "gerçekliğine" bağlı olarak "bir şeyi veya diğerini" ifade etmek için harikadır..
+    // Sözde-kod: öne çıkan true ise metin 1'i oluşturun, aksi takdirde metin 2'yi oluşturun..
+    // Sabit kodlanmış false'u doğru değişkenle değiştirin.
+    false ? "\uD83C\uDF89 Hadi ".concat(oneCikaninIsmi(), "'\u0131 kutlayal\u0131m! \uD83E\uDD73") : 'Harika bir programcı seçin'));
+  };
 }
 },{"react":"../node_modules/react/index.js"}],"index.js":[function(require,module,exports) {
 "use strict";
@@ -29469,7 +29465,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52203" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54690" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
